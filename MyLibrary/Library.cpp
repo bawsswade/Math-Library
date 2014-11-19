@@ -3,6 +3,12 @@
 //*************** 2D Vector *************************
 Vector2D::Vector2D(){};
 
+ostream& operator<<(ostream& os, const Vector2D& v)
+{
+	os << v.x << "," << v.y << endl;
+	return os;
+}
+
 Vector2D::Vector2D(float a_x, float a_y)
 {
 	x = a_x;
@@ -25,22 +31,6 @@ Vector2D Vector2D::operator-(Vector2D &other)
 	return temp;
 }
 
-Vector2D Vector2D::operator*(Vector2D &other)
-{
-	Vector2D temp;
-	temp.x = x * other.x;
-	temp.y = y * other.y;
-	return temp;
-}
-
-Vector2D Vector2D::operator/(Vector2D &other)
-{
-	Vector2D temp;
-	temp.x = x / other.x;
-	temp.y = y / other.y;
-	return temp;
-}
-
 void Vector2D::operator+=(Vector2D &other)
 {
 	x = x + other.x;
@@ -51,18 +41,6 @@ void Vector2D::operator-=(Vector2D &other)
 {
 	x = x - other.x;
 	y = y - other.y;
-}
-
-void Vector2D::operator*=(Vector2D &other)
-{
-	x = x * other.x;
-	y = y * other.y;
-}
-
-void Vector2D::operator/=(Vector2D &other)
-{
-	x = x / other.x;
-	y = y / other.y;
 }
 
 void Vector2D::operator=(Vector2D &other)
@@ -76,28 +54,10 @@ bool Vector2D::operator==(Vector2D &other)
 	return x == other.x && y == other.y;
 }
 
-Vector2D Normalize(Vector2D v)
+void Vector2D::Scale(float num)
 {
-	Vector2D temp;
-	temp.x = v.x / Magnitude(v);
-	temp.y = v.y / Magnitude(v);
-	return temp;
-}
-
-float DotProduct(Vector2D a, Vector2D b)
-{
-	return (a.x * b.x) + (a.y * b.y);
-}
-
-void Scale(Vector2D v, float num)
-{
-	v.x *= num;
-	v.y *= num;
-}
-
-float GetAngle(Vector2D a, Vector2D b)
-{
-	return acos(DotProduct(Normalize(a), Normalize(b)));
+	x *= num;
+	y *= num;
 }
 
 Vector2D Perp(Vector2D v)
@@ -115,6 +75,12 @@ Vector2D ::~Vector2D(){};
 
 //****************** 3D Vector**************************
 Vector3D::Vector3D(){};
+
+ostream& operator<<(ostream& os, const Vector3D& v)
+{
+	os << v.x << "," << v.y << "," << v.z << endl;
+	return os;
+}
 
 Vector3D::Vector3D(float a_x, float a_y, float a_z)
 {
@@ -141,24 +107,6 @@ Vector3D Vector3D::operator-(Vector3D &other)
 	return temp;
 }
 
-Vector3D Vector3D::operator*(Vector3D &other)
-{
-	Vector3D temp;
-	temp.x = x * other.x;
-	temp.y = y * other.y;
-	temp.z = z * other.z;
-	return temp;
-}
-
-Vector3D Vector3D::operator/(Vector3D &other)
-{
-	Vector3D temp;
-	temp.x = x / other.x;
-	temp.y = y / other.y;
-	temp.z = z / other.z;
-	return temp;
-}
-
 void Vector3D::operator+=(Vector3D &other)
 {
 	x = x + other.x;
@@ -173,20 +121,6 @@ void Vector3D::operator-=(Vector3D &other)
 	z = z - other.z;
 }
 
-void Vector3D::operator*=(Vector3D &other)
-{
-	x = x * other.x;
-	y = y * other.y;
-	z = z * other.z;
-}
-
-void Vector3D::operator/=(Vector3D &other)
-{
-	x = x / other.x;
-	y = y / other.y;
-	z = z / other.z;
-}
-
 void Vector3D::operator=(Vector3D &other)
 {
 	x = other.x;
@@ -199,29 +133,30 @@ bool Vector3D::operator==(Vector3D &other)
 	return x == other.x && y == other.y && z == other.z;
 }
 
-// this might not work
-Vector3D Normalize(Vector3D v)
+void Vector3D::Scale(float num)
 {
-	Vector3D temp;
-	Magnitude(v.x, v.y);
-	return temp;
+	x *= num;
+	y *= num;
+	z *= num;
 }
 
-void Scale(Vector3D v, float num)
+Vector3D ::~Vector3D(){};
+
+//********************************************************
+
+
+
+// **********************Other Maths****************************
+
+float DotProduct(Vector2D a, Vector2D b)
 {
-	v.x *= num;
-	v.y *= num;
-	v.z *= num;
+	return (a.x * b.x) + (a.y * b.y);
 }
 
 float DotProduct(Vector3D a, Vector3D b)
 {
 	return (a.x * b.x) + (a.y * b.y) + (a.z * b.z);
 }
-//********************************************************
-
-
-
 
 float Magnitude(Vector2D v)
 {
@@ -229,13 +164,30 @@ float Magnitude(Vector2D v)
 	return c;
 }
 
-
-
-// the normalizing for 3d might not work, making this might not work
-float Magnitude(float x, float y)
+float Magnitude(Vector3D v)
 {
-	float c = sqrt((x * x) + (y * y));
+	float c = sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z));
 	return c;
 }
 
-Vector3D ::~Vector3D(){};
+Vector2D Normalize(Vector2D v)
+{
+	Vector2D temp;
+	temp.x = v.x / Magnitude(v);
+	temp.y = v.y / Magnitude(v);
+	return temp;
+}
+
+Vector3D Normalize(Vector3D v)
+{
+	Vector3D temp;
+	temp.x = v.x / Magnitude(v);
+	temp.y = v.y / Magnitude(v);
+	temp.z = v.z / Magnitude(v);
+	return temp;
+}
+
+float GetAngle(Vector2D a, Vector2D b)
+{
+	return acos(DotProduct(Normalize(a), Normalize(b)));
+}

@@ -1,4 +1,6 @@
 #include <math.h>
+#include <iostream>
+using namespace std;
 
 #ifndef _MATH_LIBRARY_H_
 #define _MATH_LIBRARY_H_
@@ -11,37 +13,23 @@ public:
 	~Vector2D();
 
 	//OVERLOAD OPERATORS 
+	friend ostream& operator<<(ostream& os, const Vector2D& v);
+
 	Vector2D operator+(Vector2D &other);
 	Vector2D operator-(Vector2D &other);
-	Vector2D operator*(Vector2D &other);
-	Vector2D operator/(Vector2D &other);
 
 	void operator+=(Vector2D &other);
 	void operator-=(Vector2D &other);
-	void operator*=(Vector2D &other);
-	void operator/=(Vector2D &other);
 	void operator=(Vector2D &other);
 	bool operator==(Vector2D &other);
 
 	//Maths
-	void Scale(Vector2D v, float num);
-	float GetAngle(Vector2D a, Vector2D b);
+	void Scale(float num);	//changes vector values
 
-	//private:
 	float x, y;
-
-private:
-	// normalize vector (get hypotnuse to 1)
-	Vector2D Normalize(Vector2D v);
-
-	// return scalar of vector b projected onto vector a
-	float DotProduct(Vector2D a, Vector2D b);
-
 	// returns perp vector
 	Vector2D Perp(Vector2D v);
 };
-
-
 
 
 
@@ -53,33 +41,38 @@ public:
 	~Vector3D();
 
 	//OVERLOAD OPERATORS
+	friend ostream& operator<<(ostream& os, const Vector3D& v);
+
 	Vector3D operator+(Vector3D &other);
 	Vector3D operator-(Vector3D &other);
-	Vector3D operator*(Vector3D &other);
-	Vector3D operator/(Vector3D &other);
 
 	void operator+=(Vector3D &other);
 	void operator-=(Vector3D &other);
-	void operator*=(Vector3D &other);
-	void operator/=(Vector3D &other);
 	void operator=(Vector3D &other);
 	bool operator==(Vector3D &other);
 
 	//Maths
-	Vector3D Normalize(Vector3D v);
-	Vector3D Normalize(float a_x, float a_y, float a_z);
+	void Scale(float num);	//changes vector values
 
-	void Scale(Vector3D v, float num);
-
-	// return scalar of vector b projected onto vector a
-	float DotProduct(Vector3D a, Vector3D b);
-
-	//private:
 	float x, y, z;
 };
 
+
+
+//*********FUNCTIONS*************
+
 // aka gets hypotonuese
 float Magnitude(Vector2D v);
-float Magnitude(float x, float y);
+float Magnitude(Vector3D v);
+
+// return scalar of vector b projected onto vector a
+float DotProduct(Vector2D a, Vector2D b);
+float DotProduct(Vector3D a, Vector3D b);
+
+// normalize vector (get hypotnuse to 1)
+Vector2D Normalize(Vector2D v);
+Vector3D Normalize(Vector3D v);
+
+float GetAngle(Vector2D a, Vector2D b);
 
 #endif

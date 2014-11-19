@@ -1,9 +1,6 @@
-﻿Build started 11/18/2014 5:17:36 PM.
+﻿Build started 11/19/2014 11:33:50 AM.
      1>Project "C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\TestProject\TestProject.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../MyLibrary /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt test.cpp
-         test.cpp
-       Link:
+     1>Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\Debug\TestProject.exe" /INCREMENTAL /NOLOGO /LIBPATH:../Debug MyLibrary.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\Debug\TestProject.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\Debug\TestProject.lib" /MACHINE:X86 Debug\test.obj
          "C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\Debug\MyLibrary.lib"
          TestProject.vcxproj -> C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\Debug\TestProject.exe
@@ -11,4 +8,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.35
+Time Elapsed 00:00:00.24
