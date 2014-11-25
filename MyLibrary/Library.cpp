@@ -126,14 +126,31 @@ void Matrix2D::Transpose()
 
 Vector3D Matrix2D::Translate(Vector3D v)
 {
-	Vector3D temp;
+	Vector3D v1, temp;
+	/*float t[XSIZE];
+	t[0] = v.x;
+	t[1] = v.y;
+	t[2] = v.z;
+
 	for (int i = 0; i < XSIZE; i++)
 	{
-		for (int j = 0; j < YSIZE; j++)
+		for (int j = 0; j < XSIZE; j++)
 		{
-			
+			t[i] = DotProduct(Matrix[i][j],t[i]);
 		}
-	}
+	}*/
+	v1.x = Matrix[0][0];
+	v1.y = Matrix[0][1];
+	v1.z = Matrix[0][2];
+	temp.x = DotProduct(v1, v);
+	v1.x = Matrix[1][0];
+	v1.y = Matrix[1][1];
+	v1.z = Matrix[1][2];
+	temp.y = DotProduct(v1, v);
+	v1.x = Matrix[2][0];
+	v1.y = Matrix[2][1];
+	v1.z = Matrix[2][2];
+	temp.z = DotProduct(v1, v);
 	return temp;
 }
 

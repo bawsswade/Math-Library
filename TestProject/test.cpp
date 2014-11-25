@@ -7,17 +7,23 @@ int main()
 {
 	Vector2D v1(1,2);
 	Vector2D v2(4,5);
+	Vector3D vector(2,5,0);
 
 	float mat[3][3] = 
 	{
-		{1,2,3},
-		{4,5,6},
-		{7,8,9}
+		{1,0,0},
+		{0,1,0},
+		{2,1,1}
 	};
 
-	Matrix2D m = mat;
-	m.Print(); 
-	cout << endl;
+	Matrix2D matrix(mat);
+	vector = matrix.Translate(vector);
+
+	cout << vector;
+
+	//Matrix2D m = mat;
+	//m.Print(); 
+	//cout << endl;
 
 	//m.Scale(1, 2);
 	//m.Transpose();
