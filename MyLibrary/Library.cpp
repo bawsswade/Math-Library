@@ -73,6 +73,87 @@ Vector2D ::~Vector2D(){};
 
 
 
+//******************Matrix2D****************************
+Matrix2D::Matrix2D()
+{
+	for (int i = 0; i < XSIZE; i++)
+	{
+		for (int j = 0; j < YSIZE; j++)
+		{
+			if (i == j)
+				Matrix[i][j] = 1;
+			else
+				Matrix[i][j] = 0;
+		}
+	}
+}
+
+Matrix2D::Matrix2D(float array[XSIZE][YSIZE])
+{
+	for (int i = 0; i < XSIZE; i++)
+	{
+		for (int j = 0; j < YSIZE; j++)
+		{
+			Matrix[i][j] = array[i][j];
+		}
+	}
+}
+
+void Matrix2D::Scale(float x, float y)
+{
+	Matrix[0][2] = x;
+	Matrix[1][2] = y;
+}
+
+void Matrix2D::Transpose()
+{
+	float temp[XSIZE][YSIZE];
+	for (int i = 0; i < XSIZE; i++)
+	{
+		for (int j = 0; j < YSIZE; j++)
+		{
+			temp[i][j] = Matrix[j][i];
+		}
+	}
+	for (int i = 0; i < XSIZE; i++)
+	{
+		for (int j = 0; j < YSIZE; j++)
+		{
+			Matrix[i][j] = temp[i][j];
+		}
+	}
+}
+
+Vector3D Matrix2D::Translate(Vector3D v)
+{
+	Vector3D temp;
+	for (int i = 0; i < XSIZE; i++)
+	{
+		for (int j = 0; j < YSIZE; j++)
+		{
+			
+		}
+	}
+	return temp;
+}
+
+void Matrix2D::Print()
+{
+	for (int i = 0; i < XSIZE; i++)
+	{
+		for (int j = 0; j < YSIZE; j++)
+		{
+			cout << Matrix[i][j];
+		}
+		cout << endl;
+	}
+}
+
+Matrix2D::~Matrix2D(){};
+//******************************************************
+
+
+
 //****************** 3D Vector**************************
 Vector3D::Vector3D(){};
 
@@ -146,6 +227,11 @@ Vector3D ::~Vector3D(){};
 
 
 
+
+
+
+
+
 // **********************Other Maths****************************
 
 float DotProduct(Vector2D a, Vector2D b)
@@ -184,6 +270,20 @@ Vector3D Normalize(Vector3D v)
 	temp.x = v.x / Magnitude(v);
 	temp.y = v.y / Magnitude(v);
 	temp.z = v.z / Magnitude(v);
+	return temp;
+}
+
+float CrossProduct(Vector2D a, Vector2D b)
+{
+	return a.x*b.y - a.y*b.x;
+}
+
+Vector3D CrossProduct(Vector3D a, Vector3D b)
+{
+	Vector3D temp;
+	temp.x = a.y*b.z - a.z*b.y;
+	temp.y = a.z*b.x - a.x*b.z;
+	temp.z = a.x*b.y - a.y*b.x;
 	return temp;
 }
 

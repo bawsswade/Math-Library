@@ -5,6 +5,10 @@ using namespace std;
 #ifndef _MATH_LIBRARY_H_
 #define _MATH_LIBRARY_H_
 
+const int XSIZE = 3;
+const int YSIZE = 3;
+const int ZSIZE = 3;
+
 class Vector2D
 {
 public:
@@ -31,8 +35,6 @@ public:
 	Vector2D Perp(Vector2D v);
 };
 
-
-
 class Vector3D
 {
 public:
@@ -57,7 +59,30 @@ public:
 	float x, y, z;
 };
 
+class Matrix2D
+{
+public:
+	float Matrix[XSIZE][YSIZE];
 
+	Matrix2D();
+
+	//converts from column major to row major (math to memory way)
+	Matrix2D(float array[XSIZE][YSIZE]);
+
+	void Scale(float x, float y);
+
+	//inverts matrix
+	void Transpose();
+
+	Vector3D Translate(Vector3D v);
+
+	//prints column major (looks like a math matrix) 
+	void Print();
+
+	~Matrix2D();
+
+	
+};
 
 //*********FUNCTIONS*************
 
@@ -72,6 +97,10 @@ float DotProduct(Vector3D a, Vector3D b);
 // normalize vector (get hypotnuse to 1)
 Vector2D Normalize(Vector2D v);
 Vector3D Normalize(Vector3D v);
+
+float CrossProduct(Vector2D a, Vector2D b);
+// get perp
+Vector3D CrossProduct(Vector3D v1, Vector3D v2);
 
 float GetAngle(Vector2D a, Vector2D b);
 

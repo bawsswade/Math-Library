@@ -1,0 +1,14 @@
+﻿Build started 11/24/2014 12:00:26 PM.
+     1>Project "C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\MyLibrary\MyLibrary.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Library.cpp
+         Library.cpp
+     1>Library.cpp(80): error C2084: function 'Matrix2D::Matrix2D(void)' already has a body
+                 c:\users\wade.gushikuma\documents\github\math-library\mylibrary\Library.h(65) : see previous definition of '{ctor}'
+     1>Library.cpp(105): error C2084: function 'Matrix2D::~Matrix2D(void)' already has a body
+                 c:\users\wade.gushikuma\documents\github\math-library\mylibrary\Library.h(67) : see previous definition of '{dtor}'
+     1>Done Building Project "C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\MyLibrary\MyLibrary.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.24
