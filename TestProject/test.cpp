@@ -7,27 +7,33 @@ int main()
 {
 	Vector2D v1(1,2);
 	Vector2D v2(4,5);
-	Vector3D vector(2,5,0);
+	Vector4D vector(2,5,1,1);
 
 	float mat[3][3] = 
 	{
 		{1,0,0},
 		{0,1,0},
-		{2,1,1}
+		{0,0,1}
+	};
+	
+	float mat1[4][4] =
+	{
+		{1,0,0,0},
+		{0,1,0,0},
+		{0,0,1,0},
+		{0,0,0,1}
 	};
 
-	Matrix2D matrix(mat);
-	vector = matrix.Translate(vector);
+	Matrix3D matrix(mat1);
+	matrix.Rotate(20);
+	matrix.Print();
+	vector = matrix.Translate(1,1,1);
 
-	cout << vector;
+	//cout << vector;
 
-	//Matrix2D m = mat;
+	Matrix2D m = mat;
 	//m.Print(); 
 	//cout << endl;
-
-	//m.Scale(1, 2);
-	//m.Transpose();
-	//m.Print();
 
 	//cout << CrossProduct(v1, v2);
 

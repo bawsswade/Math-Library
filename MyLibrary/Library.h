@@ -7,7 +7,7 @@ using namespace std;
 
 const int XSIZE = 3;
 const int YSIZE = 3;
-const int ZSIZE = 3;
+const int SIZE = 4;
 
 class Vector2D
 {
@@ -59,29 +59,71 @@ public:
 	float x, y, z;
 };
 
+class Vector4D
+{
+public:
+	Vector4D();
+
+	void operator=(Vector4D &other);
+	void operator+=(Vector4D &other);
+
+	Vector4D(float a_x, float a_y, float a_z, float a_w);
+	~Vector4D();
+	float x, y, z, w;
+};
+
 class Matrix2D
 {
 public:
 	float Matrix[XSIZE][YSIZE];
 
 	Matrix2D();
-
-	//converts from column major to row major (math to memory way)
 	Matrix2D(float array[XSIZE][YSIZE]);
 
-	void Scale(float x, float y);
+	//void Scale(float x, float y);
 
 	//inverts matrix
 	void Transpose();
+	
+	void Translate(float a_x, float a_y);
+	/*parameters: (shift x value by float a_x, shift y value by float b_x)*/
 
-	Vector3D Translate(Vector3D v);
+	void Rotate(float angle);
+	/*parameters: (rotate by float angle)*/
+
+	void Scale(float a_x, float a_y);
+	/*parameters: (scale x value by float a_x, scale y value by float b_x)*/
+
+	Vector3D Multiply(Vector3D v);
 
 	//prints column major (looks like a math matrix) 
 	void Print();
 
-	~Matrix2D();
+	~Matrix2D();	
+};
 
-	
+class Matrix3D
+{
+public:
+	Matrix3D();
+	Matrix3D(float array[SIZE][SIZE]);
+
+	float Matrix[SIZE][SIZE];
+
+	void Translate(float a_x, float a_y, float a_z);
+	/*parameters: (shift x value by float a_x, shift y value by float b_x)*/
+
+	void Rotate(float angle);
+	/*parameters: (rotate by float angle)*/
+
+	void Scale(float a_x, float a_y, float a_z);
+	/*parameters: (scale x value by float a_x, scale y value by float b_x)*/
+
+	Vector4D Multiply(Vector4D v);
+
+	void Print();
+
+	~Matrix3D();
 };
 
 //*********FUNCTIONS*************
@@ -92,7 +134,9 @@ float Magnitude(Vector3D v);
 
 // return scalar of vector b projected onto vector a
 float DotProduct(Vector2D a, Vector2D b);
+//float DotProduct(float[], float[]);
 float DotProduct(Vector3D a, Vector3D b);
+float DotProduct(Vector4D a, Vector4D b);
 
 // normalize vector (get hypotnuse to 1)
 Vector2D Normalize(Vector2D v);
