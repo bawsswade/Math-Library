@@ -140,6 +140,13 @@ void Vector3D::Scale(float num)
 	z *= num;
 }
 
+void Vector3D::SetValues(float a_x, float a_y, float a_z)
+{
+	x = a_x;
+	y = a_y;
+	z = a_z;
+}
+
 Vector3D ::~Vector3D(){};
 
 //********************************************************
@@ -177,6 +184,14 @@ void Vector4D::operator+=(Vector4D &other)
 	y = y + other.y;
 	z = z + other.z;
 	w = w + other.w;
+}
+
+void Vector4D::SetValues(float a_x, float a_y, float a_z, float a_w)
+{
+	x = a_x;
+	y = a_y;
+	z = a_z;
+	w = a_w;
 }
 
 Vector4D::~Vector4D(){};
@@ -242,6 +257,7 @@ void Matrix2D::Translate(float a_x, float a_y)
 
 void Matrix2D::Rotate(float angle)
 {
+	angle = DegreesToRadians(angle);
 	Matrix[0][0] = cos(angle);
 	Matrix[0][1] = -sin(angle);
 	Matrix[1][0] = sin(angle);
@@ -254,32 +270,13 @@ void Matrix2D::Scale(float a_x, float a_y)
 	Matrix[1][1] *= a_y;
 }
 
-Vector3D Matrix2D::Multiply(Vector3D v)
-{
-	Vector3D v1, temp;
-
-	v1.x = Matrix[0][0];
-	v1.y = Matrix[0][1];
-	v1.z = Matrix[0][2];
-	temp.x = DotProduct(v1, v);
-	v1.x = Matrix[1][0];
-	v1.y = Matrix[1][1];
-	v1.z = Matrix[1][2];
-	temp.y = DotProduct(v1, v);
-	v1.x = Matrix[2][0];
-	v1.y = Matrix[2][1];
-	v1.z = Matrix[2][2];
-	temp.z = DotProduct(v1, v);
-	return temp;
-}
-
 void Matrix2D::Print()
 {
 	for (int i = 0; i < XSIZE; i++)
 	{
 		for (int j = 0; j < YSIZE; j++)
 		{
-			cout << Matrix[i][j];
+			cout << Matrix[i][j] << " ";
 		}
 		cout << endl;
 	}
@@ -316,33 +313,6 @@ void Matrix3D::Scale(float a_x, float a_y, float a_z)
 	Matrix[2][2] *= a_z;
 }
 
-Vector4D Matrix3D::Multiply(Vector4D v)
-{
-	Vector4D v1, temp;
-
-	v1.x = Matrix[0][0];
-	v1.y = Matrix[0][1];
-	v1.z = Matrix[0][2];
-	v1.w = Matrix[0][3];
-	temp.x = DotProduct(v1, v);
-	v1.x = Matrix[1][0];
-	v1.y = Matrix[1][1];
-	v1.z = Matrix[1][2];
-	v1.w = Matrix[1][3];
-	temp.y = DotProduct(v1, v);
-	v1.x = Matrix[2][0];
-	v1.y = Matrix[2][1];
-	v1.z = Matrix[2][2];
-	v1.w = Matrix[2][3];
-	temp.z = DotProduct(v1, v);
-	v1.x = Matrix[3][0];
-	v1.y = Matrix[3][1];
-	v1.z = Matrix[3][2];
-	v1.w = Matrix[3][3];
-	temp.w = DotProduct(v1, v);
-	return temp;
-}
-
 void Matrix3D::Print()
 {
 	for (int i = 0; i < SIZE; i++)
@@ -360,6 +330,16 @@ Matrix3D::~Matrix3D(){};
 
 
 // **********************Other Maths****************************
+
+float DegreesToRadians(float degrees)
+{
+	return degrees * ((atan(1)*4)/180);
+}
+
+float RadiansToAgrees(float radians)
+{
+	return radians * (180/(atan(1) * 4));
+}
 
 float DotProduct(Vector2D a, Vector2D b)
 {
@@ -448,4 +428,47 @@ Vector3D CrossProduct(Vector3D a, Vector3D b)
 float GetAngle(Vector2D a, Vector2D b)
 {
 	return acos(DotProduct(Normalize(a), Normalize(b)));
+}
+
+Vector3D Multiply(Matrix2D m, Vector3D v)
+{
+	Vector3D temp;
+	Vector3D v1(m.Matrix[0][0], m.Matrix[0][1], m.Matrix[0][2]);
+	temp.x = DotProduct(v1, v);
+	v1.SetValues(m.Matrix[1][0], m.Matrix[1][1], m.Matrix[1][2]);
+	temp.y = DotProduct(v1, v);
+	v1.SetValues(m.Matrix[2][0], m.Matrix[2][1], m.Matrix[2][2]);
+	temp.z = DotProduct(v1, v);
+	return temp;
+}
+
+Vector4D Multiply(Matrix3D m, Vector4D v)
+{
+	Vector4D temp;
+	Vector4D v1(m.Matrix[0][0], m.Matrix[0][1], m.Matrix[0][2], m.Matrix[0][3]);
+	temp.x = DotProduct(v1, v);
+	v1.SetValues(m.Matrix[1][0], m.Matrix[1][1], m.Matrix[1][2], m.Matrix[1][3]);
+	temp.y = DotProduct(v1, v);
+	v1.SetValues(m.Matrix[2][0], m.Matrix[2][1], m.Matrix[2][2], m.Matrix[2][3]);
+	temp.z = DotProduct(v1, v);
+	v1.SetValues(m.Matrix[3][0], m.Matrix[3][1], m.Matrix[3][2], m.Matrix[3][3]);
+	temp.w = DotProduct(v1, v);
+	return temp;
+}
+
+Matrix2D Multiply(Matrix2D m1, Matrix2D m2)
+{
+	Matrix2D temp;
+	Vector3D v1, v2;
+
+	for (int i = 0; i < 3; i++)
+	{
+		v1.SetValues(m1.Matrix[i][0], m1.Matrix[i][1], m1.Matrix[i][2]);
+		for (int j = 0; j < 3; j++)
+		{
+			v2.SetValues(m2.Matrix[0][j], m2.Matrix[1][j], m2.Matrix[2][j]);
+			temp.Matrix[i][j] = DotProduct(v1, v2);
+		}
+	}
+	return temp;
 }

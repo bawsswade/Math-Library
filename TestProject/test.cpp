@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
 	Vector2D v1(1,2);
-	Vector2D v2(4,5);
+	Vector3D v3(2,5,1);
 	Vector4D vector(2,5,1,1);
 
 	float mat[3][3] = 
@@ -24,9 +24,30 @@ int main()
 		{0,0,0,1}
 	};
 
-	Matrix2D m(mat);
-	m.Translate(1,1);
+	float m1[3][3] =
+	{
+		{ 1, 2, 3 },
+		{ 3, 2, 1 },
+		{ 2, 1, 3 }
+	};
+
+	float m2[3][3] =
+	{
+		{ 4, 5, 6 },
+		{ 6, 5, 4 },
+		{ 4, 6, 5 }
+	};
+
+	Matrix2D mm1(m1);
+	Matrix2D mm2(m2);
+	mm1 = Multiply(mm1, mm2);
+	mm1.Print();
+
+	/*Matrix2D m(mat);
+	m.Rotate(20);
+	v3 = Multiply(m, v3);
 	m.Print();
+	cout << v3;*/
 
 	//cout << vector;
 

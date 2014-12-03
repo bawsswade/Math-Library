@@ -56,6 +56,9 @@ public:
 	//Maths
 	void Scale(float num);	//changes vector values
 
+	void SetValues(float x, float y, float z);
+	/*used to put matrix points into vector*/
+
 	float x, y, z;
 };
 
@@ -68,6 +71,10 @@ public:
 	void operator+=(Vector4D &other);
 
 	Vector4D(float a_x, float a_y, float a_z, float a_w);
+
+	void SetValues(float x, float y, float z, float w);
+	/*used to put matrix points into vector*/
+
 	~Vector4D();
 	float x, y, z, w;
 };
@@ -89,12 +96,10 @@ public:
 	/*parameters: (shift x value by float a_x, shift y value by float b_x)*/
 
 	void Rotate(float angle);
-	/*parameters: (rotate by float angle)*/
+	/*parameters: (angle in degrees)*/
 
 	void Scale(float a_x, float a_y);
 	/*parameters: (scale x value by float a_x, scale y value by float b_x)*/
-
-	Vector3D Multiply(Vector3D v);
 
 	//prints column major (looks like a math matrix) 
 	void Print();
@@ -119,14 +124,16 @@ public:
 	void Scale(float a_x, float a_y, float a_z);
 	/*parameters: (scale x value by float a_x, scale y value by float b_x)*/
 
-	Vector4D Multiply(Vector4D v);
-
 	void Print();
 
 	~Matrix3D();
 };
 
 //*********FUNCTIONS*************
+
+//conversion
+float DegreesToRadians(float degrees);
+float RadiansToAgrees(float radians);
 
 // aka gets hypotonuese
 float Magnitude(Vector2D v);
@@ -149,5 +156,9 @@ float CrossProduct(Vector2D a, Vector2D b);
 Vector3D CrossProduct(Vector3D v1, Vector3D v2);
 
 float GetAngle(Vector2D a, Vector2D b);
+
+Vector3D Multiply(Matrix2D m, Vector3D v);
+Vector4D Multiply(Matrix3D m, Vector4D v);
+Matrix2D Multiply(Matrix2D m1, Matrix2D m2);
 
 #endif
