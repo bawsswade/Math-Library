@@ -63,7 +63,7 @@ class Vector4D
 {
 public:
 	Vector4D();
-
+	friend ostream& operator<<(ostream& os, const Vector4D& v);
 	void operator=(Vector4D &other);
 	void operator+=(Vector4D &other);
 
@@ -131,6 +131,7 @@ public:
 // aka gets hypotonuese
 float Magnitude(Vector2D v);
 float Magnitude(Vector3D v);
+float Magnitude(Vector4D v);
 
 // return scalar of vector b projected onto vector a
 float DotProduct(Vector2D a, Vector2D b);
@@ -141,6 +142,7 @@ float DotProduct(Vector4D a, Vector4D b);
 // normalize vector (get hypotnuse to 1)
 Vector2D Normalize(Vector2D v);
 Vector3D Normalize(Vector3D v);
+Vector4D Normalize(Vector4D v);
 
 float CrossProduct(Vector2D a, Vector2D b);
 // get perp

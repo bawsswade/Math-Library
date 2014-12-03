@@ -1,13 +1,14 @@
-﻿Build started 11/25/2014 4:29:57 PM.
+﻿Build started 12/2/2014 5:47:27 PM.
      1>Project "C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\TestProject\TestProject.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../MyLibrary /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt test.cpp
          test.cpp
-     1>c:\users\wade.gushikuma\documents\github\math-library\testproject\test.cpp(30): error C2679: binary '=' : no operator found which takes a right-hand operand of type 'void' (or there is no acceptable conversion)
-                 c:\users\wade.gushikuma\documents\github\math-library\mylibrary\library.h(67): could be 'void Vector4D::operator =(Vector4D &)'
-                 while trying to match the argument list '(Vector4D, void)'
-     1>Done Building Project "C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\TestProject\TestProject.vcxproj" (Build target(s)) -- FAILED.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\Debug\TestProject.exe" /INCREMENTAL /NOLOGO /LIBPATH:../Debug MyLibrary.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\Debug\TestProject.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\Debug\TestProject.lib" /MACHINE:X86 Debug\test.obj
+         "C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\Debug\MyLibrary.lib"
+         TestProject.vcxproj -> C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\Debug\TestProject.exe
+     1>Done Building Project "C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\TestProject\TestProject.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:00.27
+Time Elapsed 00:00:00.58

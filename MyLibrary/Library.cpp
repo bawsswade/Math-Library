@@ -149,6 +149,12 @@ Vector3D ::~Vector3D(){};
 //**********************Vector 4D**************************
 Vector4D::Vector4D(){};
 
+ostream& operator<<(ostream& os, const Vector4D& v)
+{
+	os << v.x << "," << v.y << "," << v.z << "," << v.w << endl;
+	return os;
+}
+
 Vector4D::Vector4D(float a_x, float a_y, float a_z, float a_w)
 {
 	x = a_x;
@@ -392,6 +398,12 @@ float Magnitude(Vector3D v)
 	return c;
 }
 
+float Magnitude(Vector4D v)
+{
+	float c = sqrt((v.x * v.x) + (v.y * v.y) + (v.z * v.z) + (v.w * v.w));
+	return c;
+}
+
 Vector2D Normalize(Vector2D v)
 {
 	Vector2D temp;
@@ -406,6 +418,16 @@ Vector3D Normalize(Vector3D v)
 	temp.x = v.x / Magnitude(v);
 	temp.y = v.y / Magnitude(v);
 	temp.z = v.z / Magnitude(v);
+	return temp;
+}
+
+Vector4D Normalize(Vector4D v)
+{
+	Vector4D temp;
+	temp.x = v.x / Magnitude(v);
+	temp.y = v.y / Magnitude(v);
+	temp.z = v.z / Magnitude(v);
+	temp.w = v.w / Magnitude(v);
 	return temp;
 }
 

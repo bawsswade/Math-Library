@@ -24,14 +24,13 @@ int main()
 		{0,0,0,1}
 	};
 
-	Matrix3D matrix(mat1);
-	matrix.Rotate(20);
-	matrix.Print();
-	vector = matrix.Translate(1,1,1);
+	Matrix2D m(mat);
+	m.Translate(1,1);
+	m.Print();
 
 	//cout << vector;
 
-	Matrix2D m = mat;
+	//Matrix2D m = mat;
 	//m.Print(); 
 	//cout << endl;
 
