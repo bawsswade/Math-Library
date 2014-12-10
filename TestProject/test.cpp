@@ -1,11 +1,13 @@
 #include "Library.h"
 #include <iostream>
 
+
 using namespace std;
 
 int main()
 {
-	Vector2D v1(1,2);
+	Vector2D v1(1,1);
+	Vector2D v2(2,2);
 	Vector3D v3(2,5,1);
 	Vector4D vector(2,5,1,1);
 
@@ -38,10 +40,18 @@ int main()
 		{ 4, 6, 5 }
 	};
 
-	Matrix2D mm1(m1);
+	int result = 204 | 170;
+	cout << result;
+	//cout << FindPowerof2(11);
+
+	/*Vector2D temp;
+	temp = Interpolate(v2, v1, .5f);
+	cout << temp.x << "," << temp.y << endl;*/
+
+	/*Matrix2D mm1(m1);
 	Matrix2D mm2(m2);
 	mm1 = Multiply(mm1, mm2);
-	mm1.Print();
+	mm1.Print();*/
 
 	/*Matrix2D m(mat);
 	m.Rotate(20);

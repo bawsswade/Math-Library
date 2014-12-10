@@ -1,10 +1,14 @@
-﻿Build started 12/3/2014 11:02:57 AM.
+﻿Build started 12/9/2014 3:16:34 PM.
      1>Project "C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\MyLibrary\MyLibrary.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Library.cpp
          Library.cpp
-     1>c:\users\wade.gushikuma\documents\github\math-library\mylibrary\library.cpp(336): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\wade.gushikuma\documents\github\math-library\mylibrary\library.cpp(341): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\wade.gushikuma\documents\github\math-library\mylibrary\library.cpp(192): warning C4244: '=' : conversion from 'unsigned long' to 'float', possible loss of data
+     1>c:\users\wade.gushikuma\documents\github\math-library\mylibrary\library.cpp(193): warning C4244: '=' : conversion from 'unsigned long' to 'float', possible loss of data
+     1>c:\users\wade.gushikuma\documents\github\math-library\mylibrary\library.cpp(194): warning C4244: '=' : conversion from 'unsigned long' to 'float', possible loss of data
+     1>c:\users\wade.gushikuma\documents\github\math-library\mylibrary\library.cpp(195): warning C4244: '=' : conversion from 'unsigned long' to 'float', possible loss of data
+     1>c:\users\wade.gushikuma\documents\github\math-library\mylibrary\library.cpp(361): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\wade.gushikuma\documents\github\math-library\mylibrary\library.cpp(366): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\Debug\MyLibrary.lib" /NOLOGO Debug\Library.obj
          MyLibrary.vcxproj -> C:\Users\wade.gushikuma\Documents\GitHub\Math-Library\Debug\MyLibrary.lib
@@ -12,4 +16,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.43
+Time Elapsed 00:00:00.44

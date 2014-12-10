@@ -68,6 +68,14 @@ Vector2D Perp(Vector2D v)
 	return temp;
 }
 
+Vector2D Vector2D::Interpolate(Vector2D v, float perc)
+{
+	Vector2D temp;
+	temp.x = ((v.x - x) * perc) + x;
+	temp.y = ((v.y - y) * perc) + y;
+	return temp;
+}
+
 Vector2D ::~Vector2D(){};
 //******************************************************
 
@@ -147,6 +155,15 @@ void Vector3D::SetValues(float a_x, float a_y, float a_z)
 	z = a_z;
 }
 
+Vector3D Vector3D::Interpolate(Vector3D v, float perc)
+{
+	Vector3D temp;
+	temp.x = ((v.x - x) * perc) + x;
+	temp.y = ((v.y - y) * perc) + y;
+	temp.z = ((v.z - z) * perc) + z;
+	return temp;
+}
+
 Vector3D ::~Vector3D(){};
 
 //********************************************************
@@ -168,6 +185,14 @@ Vector4D::Vector4D(float a_x, float a_y, float a_z, float a_w)
 	y = a_y;
 	z = a_z;
 	w = a_w;
+}
+
+Vector4D::Vector4D(char a_x[], char a_y[], char a_z[], char a_w[])
+{
+	x = std::strtoul(a_x, 0, 4);
+	y = std::strtoul(a_y, 0, 4);
+	z = std::strtoul(a_z, 0, 4);
+	w = std::strtoul(a_w, 0, 4);
 }
 
 void Vector4D::operator=(Vector4D &other)
@@ -471,4 +496,66 @@ Matrix2D Multiply(Matrix2D m1, Matrix2D m2)
 		}
 	}
 	return temp;
+}
+
+void SetOMat(float l, float r, float t, float b, float n, float f, Matrix3D mat)
+{
+	mat.Matrix[0][0] = 2 / (r - l);
+	mat.Matrix[0][1] = 0;
+	mat.Matrix[0][2] = 0;
+	mat.Matrix[0][3] = 0;
+
+	mat.Matrix[1][0] = 0;
+	mat.Matrix[1][1] = 2 / (t - b);
+	mat.Matrix[1][2] = 0;
+	mat.Matrix[1][3] = 0;
+
+	mat.Matrix[2][0] = 0;
+	mat.Matrix[2][1] = 0;
+	mat.Matrix[2][2] = -1 / (f - n);
+	mat.Matrix[2][3] = 0;
+
+	mat.Matrix[3][0] = -(r + l) / (r - l);
+	mat.Matrix[3][1] = -(t + b) / (t - b);
+	mat.Matrix[3][2] = -n / (f - n);
+	mat.Matrix[3][3] = 1;
+}
+
+Vector2D Interpolate(Vector2D v1, Vector2D v2, float perc)
+{
+	Vector2D temp;
+	temp.x = ((v2.x - v1.x) * perc) + v1.x;
+	temp.y = ((v2.y - v1.y) * perc) + v1.y;
+	return temp;
+}
+
+Vector3D Interpolate(Vector3D v1, Vector3D v2, float perc)
+{
+	Vector3D temp;
+	temp.x = ((v2.x - v1.x) * perc) + v1.x;
+	temp.y = ((v2.y - v1.y) * perc) + v1.y;
+	temp.z = ((v2.z - v1.z) * perc) + v1.z;
+	return temp;
+}
+
+float Interpolate(float a, float b, float perc)
+{
+	return ((b - a)*perc) + a;
+}
+
+int FindPowerof2(int num)
+{
+	int count = 0;
+	int value = num;
+	while (value > 1)
+	{
+		value /= 2;
+		count++;
+	}
+	if (abs(pow(2,count)-num) < (pow(2,count+1)-num))
+	{
+		return count;
+	}
+	else 
+		return count+1;
 }

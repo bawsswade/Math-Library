@@ -1,4 +1,5 @@
 #include <math.h>
+#include <cstdlib>
 #include <iostream>
 using namespace std;
 
@@ -30,9 +31,13 @@ public:
 	//Maths
 	void Scale(float num);	//changes vector values
 
-	float x, y;
 	// returns perp vector
 	Vector2D Perp(Vector2D v);
+
+	// parameters: vector end point, percent to interpolate by 
+	Vector2D Interpolate(Vector2D v, float perc);
+
+	float x, y;
 };
 
 class Vector3D
@@ -59,6 +64,9 @@ public:
 	void SetValues(float x, float y, float z);
 	/*used to put matrix points into vector*/
 
+	// parameters: vector end point, percent to interpolate by 
+	Vector3D Interpolate(Vector3D v, float perc);
+
 	float x, y, z;
 };
 
@@ -71,6 +79,7 @@ public:
 	void operator+=(Vector4D &other);
 
 	Vector4D(float a_x, float a_y, float a_z, float a_w);
+	Vector4D(char a_x[], char a_y[], char a_z[], char a_w[]);
 
 	void SetValues(float x, float y, float z, float w);
 	/*used to put matrix points into vector*/
@@ -140,7 +149,7 @@ float Magnitude(Vector2D v);
 float Magnitude(Vector3D v);
 float Magnitude(Vector4D v);
 
-// return scalar of vector b projected onto vector a
+// returns scalar of vector b projected onto vector a
 float DotProduct(Vector2D a, Vector2D b);
 //float DotProduct(float[], float[]);
 float DotProduct(Vector3D a, Vector3D b);
@@ -160,5 +169,16 @@ float GetAngle(Vector2D a, Vector2D b);
 Vector3D Multiply(Matrix2D m, Vector3D v);
 Vector4D Multiply(Matrix3D m, Vector4D v);
 Matrix2D Multiply(Matrix2D m1, Matrix2D m2);
+
+void SetOMat(float l, float r, float t, float b, float n, float f, Matrix3D mat);
+
+Vector2D Interpolate(Vector2D v1, Vector2D v2, float perc);
+Vector3D Interpolate(Vector3D v1, Vector3D v2, float perc);
+/*takes in 2 vectors and percent to interpolate it by. returns temp interpolated vector*/
+float Interpolate(float a, float b, float perc);
+/*interpolates between 2 floats by percent*/
+
+int FindPowerof2(int num);
+//finds power of two or nearest
 
 #endif
