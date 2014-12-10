@@ -79,7 +79,7 @@ public:
 	void operator+=(Vector4D &other);
 
 	Vector4D(float a_x, float a_y, float a_z, float a_w);
-	Vector4D(char a_x[], char a_y[], char a_z[], char a_w[]);
+	Vector4D(unsigned int hex);
 
 	void SetValues(float x, float y, float z, float w);
 	/*used to put matrix points into vector*/

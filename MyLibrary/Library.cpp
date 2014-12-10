@@ -187,12 +187,12 @@ Vector4D::Vector4D(float a_x, float a_y, float a_z, float a_w)
 	w = a_w;
 }
 
-Vector4D::Vector4D(char a_x[], char a_y[], char a_z[], char a_w[])
+Vector4D::Vector4D(unsigned int hex)
 {
-	x = std::strtoul(a_x, 0, 4);
-	y = std::strtoul(a_y, 0, 4);
-	z = std::strtoul(a_z, 0, 4);
-	w = std::strtoul(a_w, 0, 4);
+	x = ((hex >> 16) & 0xff) / 255.0;
+	y = ((hex >> 24) & 0xff) / 255.0;
+	z = ((hex >> 32) & 0xff) / 255.0;
+	w = ((hex >> 40) & 0xff) / 255.0;
 }
 
 void Vector4D::operator=(Vector4D &other)

@@ -10,6 +10,8 @@ int main()
 	Vector2D v2(2,2);
 	Vector3D v3(2,5,1);
 	Vector4D vector(2,5,1,1);
+	Vector4D hex(0xffffffff);
+	cout << hex;
 
 	float mat[3][3] = 
 	{
@@ -41,7 +43,7 @@ int main()
 	};
 
 	int result = 204 | 170;
-	cout << result;
+	//cout << result;
 	//cout << FindPowerof2(11);
 
 	/*Vector2D temp;
