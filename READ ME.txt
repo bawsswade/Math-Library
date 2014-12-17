@@ -1,0 +1,17 @@
+Math Library
+
+classes:
+	vector 2
+	vector 3
+	vector 4
+
+	- overloading operators
+
+Classes:
+	matrix 3x3
+	matrix 4x4
+
+	- 
+
+functions:
+	

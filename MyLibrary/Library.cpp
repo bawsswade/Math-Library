@@ -249,12 +249,6 @@ Matrix2D::Matrix2D(float array[XSIZE][YSIZE])
 	}
 }
 
-/*void Matrix2D::Scale(float x, float y)
-{
-Matrix[0][2] = x;
-Matrix[1][2] = y;
-}*/
-
 void Matrix2D::Transpose()
 {
 	float temp[XSIZE][YSIZE];
@@ -314,7 +308,16 @@ Matrix2D::~Matrix2D(){};
 //***********************3D Matrix****************************
 Matrix3D::Matrix3D(){};
 
-Matrix3D::Matrix3D(float array[SIZE][SIZE]){}
+Matrix3D::Matrix3D(float array[SIZE][SIZE])
+{
+	for (int i = 0; i < SIZE; i++)
+	{
+		for (int j = 0; j < SIZE; j++)
+		{
+			Matrix[i][j] = array[i][j];
+		}
+	}
+}
 
 void Matrix3D::Translate(float a_x, float a_y, float a_z)
 {
