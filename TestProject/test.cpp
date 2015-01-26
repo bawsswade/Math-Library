@@ -57,7 +57,7 @@ int main()
 		{ 12, 11, 10, 9 },
 		{ 16, 15, 14, 13  }
 	};
-
+	
 	cout << "Testing Dot product..." << endl;
 	cout << "v1 . v2 : " << DotProduct(v1, v2) << endl;
 	cout << "v3 . v4 : " << DotProduct(v3, v4) << endl << endl;
@@ -144,7 +144,7 @@ int main()
 
 	cout << "Testing finding power of 2..." << endl;
 	cout << "power for 20 is " << FindPowerof2(20) << endl << endl;
-
+	
 	system("pause");
 	return 0;
 }
